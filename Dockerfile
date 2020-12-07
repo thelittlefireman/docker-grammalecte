@@ -1,6 +1,6 @@
 FROM python:3-alpine AS src
 
-ENV VERSION 1.12.2
+ENV VERSION 2.0.0
 
 RUN apk add --update --no-cache \
       unzip \
