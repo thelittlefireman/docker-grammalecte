@@ -1,4 +1,4 @@
-FROM python:3-alpine AS src
+FROM python:3.8-alpine AS src
 
 ENV VERSION 2.1.1
 
@@ -8,7 +8,7 @@ RUN apk add --update --no-cache \
  && wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v${VERSION}.zip \
  && unzip Grammalecte-fr-v${VERSION}.zip -d /srv
 
-FROM python:3-alpine
+FROM python:3.8-alpine
 
 COPY --from=src /srv/ /srv
 
