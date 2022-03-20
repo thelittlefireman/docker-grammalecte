@@ -8,6 +8,9 @@ RUN apk add --update --no-cache \
  && wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v${VERSION}.zip \
  && unzip Grammalecte-fr-v${VERSION}.zip -d /srv
 
+# FIX
+RUN sed -e "s/    if sys.version_info.major < (3, 7):/    if sys.version_info.major < 3 and sys.version_info.minor < 7:/g" /srv/grammalecte-server.py > /srv/grammalecte-server.py.tmp && mv /srv/grammalecte-server.py.tmp /srv/grammalecte-server.py
+
 FROM python:3.7-alpine
 
 COPY --from=src /srv/ /srv
